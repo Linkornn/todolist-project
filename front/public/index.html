@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="todoList">
+        <h2 align="center">To-Do List</h2>
+        <table id="myTable">
+            <tr>
+                <td><input type="text" id="taskInput" data-task-id="taskInput" placeholder="Add a new task"></td>
+                <td><input type="date" id="taskDate" data-task-id="taskDate"></td>
+                <td><input type="time" id="taskTime" data-task-id="taskTime"></td>
+                <td><button id="add" onclick="addTask()" data-task-id="addTaskButton">Add Task</button></td>
+            </tr>
+        </table>
+        <ul id="tasks">
+        </ul>
+    </div>
+    <script src="./scripts/script.js"> 
+    </script>
+</body>
+</html>
