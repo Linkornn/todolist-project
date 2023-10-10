@@ -64,4 +64,8 @@ function updateUIWithTask(taskData, taskId) {
     cell3.innerHTML = taskData.time.trim() === "" ? "No Due" : taskData.time;
     cell4.innerHTML = '<button onclick="deleteTask(this)">Delete</button>';
 }
+function deleteTask(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("myTable").deleteRow(i);
 
+  }
