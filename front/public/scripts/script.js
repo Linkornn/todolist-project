@@ -46,24 +46,21 @@ function addTask() {
         console.error('Error:', error);
     });
 }
+ 
 function updateUIWithTask(taskData) {
+    
     const tasksList = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-
-    // Create a new row for the task
     const newRow = tasksList.insertRow(-1);
 
-    // Set the date and time values as separate attributes for sorting
     newRow.setAttribute('data-date', taskData.date.trim());
     newRow.setAttribute('data-time', taskData.time.trim());
 
-    // Iterate over existing rows to find the correct position to insert the new task
     let insertIndex = 0;
     for (let i = 0; i < tasksList.rows.length; i++) {
         const existingRow = tasksList.rows[i];
         const existingDate = existingRow.getAttribute('data-date');
         const existingTime = existingRow.getAttribute('data-time');
 
-        // Compare the current task's date and time with the existing task's date and time
         if (existingDate === taskData.date.trim() && existingTime > taskData.time.trim()) {
             break;
         }
@@ -75,25 +72,38 @@ function updateUIWithTask(taskData) {
         insertIndex++;
     }
 
-    // Insert the new row at the determined index
     tasksList.insertBefore(newRow, tasksList.rows[insertIndex]);
 
-    // Populate the cells with task data
     newRow.insertCell(0).innerHTML = taskData.text;
     newRow.insertCell(1).innerHTML = taskData.date.trim() === "" ? "No Due" : taskData.date;
     newRow.insertCell(2).innerHTML = taskData.time.trim() === "" ? "No Due" : taskData.time;
 
-    // Create a delete button and set an onclick event to trigger the deletion
     const cell4 = newRow.insertCell(3);
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.onclick = function() {
-        deleteTask(taskData._id); // Pass the task ID for deletion
-        tasksList.deleteRow(newRow.rowIndex); // Remove the row from the UI
+        deleteTask(taskData._id);
+        tasksList.deleteRow(newRow.rowIndex);
     };
     cell4.appendChild(deleteButton);
 }
-
+fetch('http://localhost:3000/api/lists') // Replace with your API endpoint
+.then((response) => {
+if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+}
+return response.json();
+})
+.then((data) => {
+    console.log(data);
+// Data retrieved successfully, now update the UI with the data
+data.forEach((taskData) => {
+    updateUIWithTask(taskData);
+});
+})
+.catch((error) => {
+console.error('Error:', error);
+});
 
 
 
@@ -120,3 +130,13 @@ function deleteTask(taskId) {
 }
 
 
+
+
+  
+  
+  
+
+  
+  
+
+  
