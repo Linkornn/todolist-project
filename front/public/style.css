@@ -57,4 +57,5 @@ input[type="text"]:focus,input[type="date"]:focus,input[type="time"]:focus {
 }
 input[type="text"]:hover,input[type="date"]:hover,input[type="time"]:hover {
     transform: scale(1.1); /* Scale the button on hover */
-}
+} 
+
