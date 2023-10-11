@@ -59,3 +59,7 @@ input[type="text"]:hover,input[type="date"]:hover,input[type="time"]:hover {
     transform: scale(1.1); /* Scale the button on hover */
 } 
 
+/* Styles for screens narrower than 768px */
+@media (max-width: 768px) {
+    /* Your CSS styles for smaller screens go here */
+}

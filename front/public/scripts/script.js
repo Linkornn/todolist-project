@@ -94,54 +94,6 @@ function updateUIWithTask(taskData) {
     cell4.appendChild(deleteButton);
 }
 
-// Update the updateUIWithTask function to add delete buttons
-
-// function updateUIWithTask(taskData) {
-//     const tasksList = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-
-//     // Create a new row for the task
-//     const newRow = tasksList.insertRow(-1);
-
-//     // Set the date and time values as a single string for sorting
-//     const dateTimeValue = taskData.date.trim() + ' ' + taskData.time.trim();
-
-//     // Iterate over existing rows to find the correct position to insert the new task
-//     let insertIndex = 0;
-//     for (let i = 0; i < tasksList.rows.length; i++) {
-//         const existingRow = tasksList.rows[i];
-//         const existingDateTimeValue = existingRow.cells[1].innerHTML.trim() + ' ' + existingRow.cells[2].innerHTML.trim();
-        
-//         // Compare the current task's datetime with the existing task's datetime
-//         if (dateTimeValue < existingDateTimeValue) {
-//             break;
-//         }
-        
-//         insertIndex++;
-//     }
-
-//     // Insert the new row at the determined index
-//     tasksList.insertBefore(newRow, tasksList.rows[insertIndex]);
-
-//     // Populate the cells with task data
-//     newRow.insertCell(0).innerHTML = taskData.text;
-//     newRow.insertCell(1).innerHTML = taskData.date.trim() === "" ? "No Due" : taskData.date;
-//     newRow.insertCell(2).innerHTML = taskData.time.trim() === "" ? "No Due" : taskData.time;
-
-//     // Create a delete button and set an onclick event to trigger the deletion
-//     const cell4 = newRow.insertCell(3);
-//     const deleteButton = document.createElement("button");
-//     deleteButton.textContent = "Delete";
-//     deleteButton.onclick = function() {
-//         deleteTask(taskData._id); // Pass the task ID for deletion
-//         tasksList.deleteRow(newRow.rowIndex); // Remove the row from the UI
-//     };
-//     cell4.appendChild(deleteButton);
-
-//     // Move the new row to the bottom of the table
-//     tasksList.appendChild(newRow);
-// }
-
-
 
 
 
@@ -168,4 +120,3 @@ function deleteTask(taskId) {
 }
 
 
-// Fetch all tasks from the backend when the page loads
